@@ -23,7 +23,7 @@ services:
       - "database.m310.mongodb.university database:192.168.31.100"
       - "infrastructure.m310.mongodb.university infrastructure:192.168.31.200"
     ports:
-      - "27117:27000"
+      - "27000:27000"
   infrastructure:
     extra_hosts:
       - "database.m310.mongodb.university database:192.168.31.100"
@@ -41,4 +41,4 @@ services:
       - ./data/tools:/tools
     mem_limit: 1024000000
     ports:
-      - "27117:27000"
+      - "27000:27000"

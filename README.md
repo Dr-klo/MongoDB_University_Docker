@@ -17,23 +17,21 @@ Next: run `docker ps` command in free terminal window to get container ID.
 run `docker exec -it %container_id% bash` to enter inside container. it like `vagrant ssh` command.
 #####Hint:
 Database stored inside docker. so in each rebuild you should recreate users.
+Also one note: do not use --fork because it allows successful docker shutdowning.
 
 M103    Basic Cluster Administration
 -------------------------
 
 Open M103 folder.
 For labs you need to change command inside docker-compose file to manage mongod instance.
-Also one note: do not use --fork because it allows successful docker shutdowning.
 
 
 M310    MongoDB Security
 --------------------
-
-It is recommended to connect MFlix with MongoDB Atlas, so you do not need to
-have a MongoDB server running on your host machine. The lectures and labs in
-this course will assume that you are using an Atlas cluster instead of a local
-instance.
+Under construction.
 
 M312    Diagnostics and Debugging
 --------------------
 
+Open M312 folder.
+Note: All logs and databases will be inside docker image.

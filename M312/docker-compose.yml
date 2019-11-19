@@ -17,4 +17,4 @@ services:
       - ./labs_data:/tools
     mem_limit: 1024000000
     ports:
-      - "27117:27000"
+      - "27000:27000"
