@@ -1,0 +1,20 @@
+version: '2.3'
+
+networks:
+  private_network:
+    ipam:
+      config:
+        - subnet: 192.168.103.0/24
+services:
+  mongo:
+    build:
+      context: ./
+    networks:
+      private_network:
+        ipv4_address: 192.168.103.100
+    command: mongod -f /tools/lab2_1/single.cfg
+    volumes:
+      - ./labs_data:/tools
+    mem_limit: 1024000000
+    ports:
+      - "27117:27000"

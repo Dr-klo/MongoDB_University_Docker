@@ -1,0 +1,44 @@
+version: '2.3'
+
+networks:
+  private_network:
+    ipam:
+      config:
+        - subnet: 192.168.31.0/24
+services:
+  mongo:
+    build:
+      context: ./
+    networks:
+      private_network:
+        ipv4_address: 192.168.31.100
+    command: mongod -f /tools/lab2_1/single.cfg
+    volumes:
+#      - ./data/db:/var/mongodb/db
+      - ./data/config/mongod.conf:/data/mongod.conf
+      - ./data/logs:/home/vagrant_l
+      - ./data/tools:/tools
+    mem_limit: 1024000000
+    extra_hosts:
+      - "database.m310.mongodb.university database:192.168.31.100"
+      - "infrastructure.m310.mongodb.university infrastructure:192.168.31.200"
+    ports:
+      - "27117:27000"
+  infrastructure:
+    extra_hosts:
+      - "database.m310.mongodb.university database:192.168.31.100"
+      - "infrastructure.m310.mongodb.university infrastructure:192.168.31.200"
+    build:
+      context: ./
+    networks:
+      private_network:
+        ipv4_address: 192.168.31.200
+    command: mongod -f /tools/lab2_1/single.cfg
+    volumes:
+#      - ./data/db:/var/mongodb/db
+      - ./data/config/mongod.conf:/data/mongod.conf
+      - ./data/logs:/home/vagrant_l
+      - ./data/tools:/tools
+    mem_limit: 1024000000
+    ports:
+      - "27117:27000"

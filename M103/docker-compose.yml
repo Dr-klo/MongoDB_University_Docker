@@ -1,0 +1,17 @@
+version: '2.3'
+networks:
+  private_network:
+    ipam:
+      config:
+        - subnet: 192.168.103.0/24
+services:
+  mongo:
+    build:
+      context: ./
+    networks:
+      private_network:
+        ipv4_address: 192.168.103.100
+    command: mongod -f /data/mongod.conf  #   manage this command to your purposes
+    volumes:
+      - ./labs_data/mongod.conf:/data/mongod.conf
+    mem_limit: 1024000000
